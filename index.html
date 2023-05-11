@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>QUIZLET</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body onLoad="getQuestions()">
+	<div style="padding: 20px;">
+
+		<h1>QUIZLET</h1>
+		<h3>Answer each question by typing the correct <b>number</b> then click submit</h3>
+		<div id="questions">
+		</div>
+		<div>
+			<h1>TOTAL : </h1>
+			<p>incorrect : <span id="incorrect">0</span></p>
+			<p>correct : <span id="correct">0</span></p>
+		</div>
+	</div>
+	<script>
+		const Questions = [{
+			id: 0,
+			q: "The sky is",
+			a: [{ text: "red", isCorrect: false },
+			{ text: "pink", isCorrect: false },
+			{ text: "blue", isCorrect: true },
+			{ text: "yellow", isCorrect: false }
+			]
+
+		},
+		{
+			id: 1,
+			q: "4+4",
+			a: [{ text: "4", isCorrect: false, isSelected: false },
+			{ text: "44", isCorrect: false },
+			{ text: "8", isCorrect: false },
+			{ text: "2", isCorrect: true }
+			]
+
+		},
+		{
+			id: 2,
+			q: "2*2",
+			a: [{ text: "6", isCorrect: false },
+			{ text: "100", isCorrect: false },
+			{ text: "8", isCorrect: true },
+			{ text: "9", isCorrect: false }
+			]
+
+		}, {
+			id: 3,
+			q: "What is capital of India?",
+			a: [{ text: "gandhinagar", isCorrect: false },
+			{ text: "Surat", isCorrect: false },
+			{ text: "Delhi", isCorrect: true },
+			{ text: "mumbai", isCorrect: false }
+			]
+
+		},
+		{
+			id: 4,
+			q: "What is the capital of Thailand?",
+			a: [{ text: "Lampang", isCorrect: false, isSelected: false },
+			{ text: "phuket", isCorrect: false },
+			{ text: "Ayutthaya", isCorrect: false },
+			{ text: "Bangkok", isCorrect: true }
+			]
+
+		},
+		{
+			id: 5,
+			q: "What is the capital of Morroco",
+			a: [{ text: "tetouan", isCorrect: false },
+			{ text: "marrakec", isCorrect: false },
+			{ text: "rabat", isCorrect: true },
+			{ text: "casablanca", isCorrect: false }
+			]
+
+		}, {
+			id: 6,
+			q: "What is capital of France?",
+			a: [{ text: "France", isCorrect: false },
+			{ text: "Lile", isCorrect: false },
+			{ text: "Paris", isCorrect: true },
+			{ text: "mumbai", isCorrect: false }
+			]
+
+		},
+		{
+			id: 7,
+			q: "7*7",
+			a: [{ text: "77", isCorrect: false, isSelected: false },
+			{ text: "0", isCorrect: false },
+			{ text: "49", isCorrect: true },
+			{ text: "7", isCorrect: false }
+			]
+
+		},
+		{
+			id: 9,
+			q: "9+9",
+			a: [{ text: "18", isCorrect: true },
+			{ text: "9", isCorrect: false },
+			{ text: "1", isCorrect: false },
+			{ text: "96", isCorrect: false }
+			]
+
+		},
+		{
+			id: 10,
+			q: "9*0",
+			a: [{ text: "7", isCorrect: false },
+			{ text: "9", isCorrect: false },
+			{ text: "0", isCorrect: true },
+			{ text: "96", isCorrect: false }
+			]
+		},
+		{
+			id: 11,
+			q: "1+1",
+			a: [{ text: "0", isCorrect: false },
+			{ text: "67", isCorrect: false },
+			{ text: "2", isCorrect: true },
+			{ text: "3", isCorrect: false }
+			]
+
+		}, {
+			id: 12,
+			q: "3*5",
+			a: [{ text: "56", isCorrect: false },
+			{ text: "9", isCorrect: false },
+			{ text: "15", isCorrect: true },
+			{ text: "7", isCorrect: false }
+			]
+
+		},
+		{
+			id: 13,
+			q: "7*2",
+			a: [{ text: "77", isCorrect: false, isSelected: false },
+			{ text: "8", isCorrect: false },
+			{ text: "14", isCorrect: true },
+			{ text: "3", isCorrect: false }
+			]
+
+		},
+		{
+			id: 14,
+			q: "12*1",
+			a: [{ text: "12", isCorrect: true },
+			{ text: "9", isCorrect: false },
+			{ text: "18", isCorrect: false },
+			{ text: "96", isCorrect: false }
+			]
+
+		},
+		{
+			id: 15,
+			q: "9*0",
+			a: [{ text: "7", isCorrect: false },
+			{ text: "9", isCorrect: false },
+			{ text: "0", isCorrect: true },
+			{ text: "96", isCorrect: false }
+			]
+		}
+
+		]
+
+		function getQuestions() {
+			var arr = [];
+			while (arr.length < 10) {
+				var r = Math.floor(Math.random() * 15) + 1;
+				if (arr.indexOf(r) === -1) arr.push(r);
+			}
+
+			for (i = 0; i < 10; i++) {
+				let question = Math.floor(Math.random() * 10);
+				const questions = document.getElementById('questions');
+				questions.innerHTML += "<hr noshade width='100%' size='3' align='left'>" +
+				Questions[i].q+"</h1 >" + arr[i] +
+					"<ol>" +
+					"<li>"+Questions[i].a[0].text+"</li>" +
+					"<li>"+Questions[i].a[1].text+"</li>" +
+					"<li>"+Questions[i].a[2].text+"</li>" +
+					"<li>"+Questions[i].a[3].text+"</li>" +
+					"</ol>" +
+					"Answer: <input type='number'  name='answer' id='"+i+"' />" +
+					"<img src='' id='image"+i+"' style='display: none;' width='48' height:'48' />" +
+					"<br><button onclick='reponse("+i+")' >Submit</button>";
+
+			}
+		}
+
+		function reponse(i){
+			let choix = document.getElementById(i).value;
+			if(choix < 0 || choix > 4 || choix == ""){
+				alert("choise aswers");
+			}else{
+				document.getElementById(i).disabled = true;
+				if(Questions[i].a[choix-1].isCorrect){
+					document.getElementById("correct").innerHTML = (Number(document.getElementById("correct").innerHTML)+1);
+					document.getElementById('image'+i).style ='display: block;'
+					document.getElementById('image'+i).src ='true.png'
+				}else{
+					document.getElementById("incorrect").innerHTML = (Number(document.getElementById("incorrect").innerHTML)+1);
+					document.getElementById('image'+i).style ='display: block;'
+					document.getElementById('image'+i).src ='false.png'
+				}
+
+			}
+			}
+
+	</script>
+</body>
+
+</html
